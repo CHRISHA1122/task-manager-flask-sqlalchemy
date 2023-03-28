@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from Flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 if os.path.exists("env.py"):
     import env  # noqa
@@ -16,5 +16,6 @@ else:
         uri = uri.replace("postgres://", "postgresql://", 1)
         app.config["SQLALCHEMY_DATABASE_URI"] = uri
 
+db = SQLAlchemy(app)
 
 from taskmanager import routes  # noqa
